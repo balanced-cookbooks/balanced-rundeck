@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+    <node name="localhost" description="Rundeck server node" tags=""
+          hostname="localhost" osArch="amd64" osFamily="unix" osName="Linux"
+          osVersion="3.5.0-23-generic" username="rundeck-ssh"/>
+</project>

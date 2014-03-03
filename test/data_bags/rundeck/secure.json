@@ -1,0 +1,7 @@
+{
+    "id": "secure",
+    "description": "Rundeck requires credentals to execute on remote nodes",
+    "private_key": "-----BEGIN RSA PRIVATE KEY-----\nMIIEogIBAAKCAQEAt3iZzG ..... -----END RSA PRIVATE KEY-----",
+    "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAA ......... f3OC9Jxe/VcFmtelcmQ== rundeck keys",
+    "chef_rundeck_pem": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAx5t2uL0kAD2 ..... qTzvcb1u87qWh7rnRlHUeDQ+nI7ZBFgJK\n-----END RSA PRIVATE KEY-----"
+}
