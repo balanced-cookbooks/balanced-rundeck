@@ -22,7 +22,7 @@ driver:
 suites:
   - name: default
     run_list:
-      - recipe[balanced-rundeck::balanced]
+      - recipe[balanced-rundeck::default]
     attributes:
       citadel:
         access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>

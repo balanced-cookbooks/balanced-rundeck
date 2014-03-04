@@ -8,6 +8,8 @@ version          '0.0.1'
 
 depends          'apt'
 depends          'balanced-citadel'
+depends          'balanced-user'
 depends          'java'
 depends          'newrelic-plugin-agent'
+depends          'partial_search'
 depends          'rundeck'

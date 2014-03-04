@@ -43,33 +43,55 @@ Vagrant.configure('2') do |config|
   config.vm.box = 'opscode-ubuntu-12.04'
   config.vm.box_url = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box'
 
-  config.vm.network 'private_network', ip: '10.1.2.23'
-  config.vm.network "forwarded_port", guest: 4440, host: 4440
-
   config.vm.provider :virtualbox do |vb|
     vb.customize ['modifyvm', :id, '--cpus', 2]
     vb.customize ['modifyvm', :id, '--memory', 1024]
   end
 
-  config.vm.provision :chef_solo do |chef|
-    chef.log_level = :debug
+  access_key_id = default[:access_key_id]
+  secret_access_key = default[:secret_access_key]
 
-    chef.data_bags_path = "#{confucius_root}/data_bags"
+  #chef.data_bags_path = "#{confucius_root}/data_bags"
+  def chef_solo_config(config, *recipes, &block)
+    config.vm.provision :chef_solo do |chef|
 
-    chef.json = {
-        :balanced_env => 'vagrant',
-        :message_broker => '10.0.2.2',
-        :citadel => {
-            'newrelic/license_key' => nil,
-            'access_key_id' => default[:access_key_id],
-            'secret_access_key' => default[:secret_access_key]
-        },
-    }
+      chef.log_level = :debug
+      chef.json = {
+          :balanced_env => 'vagrant',
+          :citadel => {
+              'newrelic/license_key' => nil,
+              :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+              :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+          },
+      }
 
-    chef.run_list = [
-        "recipe[#{default[:project]}]",
-        "recipe[#{default[:project]}::balanced]",
-    ]
+      block.call(chef) if block
+    end
+  end
+
+  config.vm.define 'server' do |master|
+    master.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "512"]
+    end
+    chef_solo_config(master, 'balanced-rundeck::server') do |chef|
+      chef.run_list = [
+          "recipe[#{default[:project]}::server]"
+      ]
+    end
+    master.vm.network :private_network, ip: "10.2.3.6"
+    master.vm.network "forwarded_port", guest: 4440, host: 4440
+  end
+
+  config.vm.define 'builder' do |builder|
+    builder.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "512"]
+    end
+    chef_solo_config(builder, 'balanced-rundeck::client') do |chef|
+      chef.run_list = [
+          "recipe[#{default[:project]}::client]"
+      ]
+    end
+    builder.vm.network :private_network, ip: "10.2.3.7"
   end
 
 end

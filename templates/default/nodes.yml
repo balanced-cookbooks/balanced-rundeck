@@ -1,0 +1,7 @@
+<% for node in @nodes -%>
+<%=node[:name]%>:
+  description: Rundeck server node
+  hostname: <%=node[:name]%>
+  nodename: <%=node[:fqdn]%>
+  tags: '<%=node[:tags]%>'
+<% end -%>
