@@ -30,4 +30,4 @@
       excludePrecedence: true
       rankOrder: ascending
     include:
-      tags: bwrk-prod
+      tags: bwrk-prod.*

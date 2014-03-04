@@ -78,20 +78,20 @@ Vagrant.configure('2') do |config|
           "recipe[#{default[:project]}::server]"
       ]
     end
-    master.vm.network :private_network, ip: "10.2.3.6"
+    master.vm.network :private_network, ip: "10.2.3.6", virtualbox__intnet: true
     master.vm.network "forwarded_port", guest: 4440, host: 4440
   end
 
-  config.vm.define 'builder' do |builder|
-    builder.vm.provider :virtualbox do |vb|
+  config.vm.define 'client' do |client|
+    client.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--memory", "512"]
     end
-    chef_solo_config(builder, 'balanced-rundeck::client') do |chef|
+    chef_solo_config(client, 'balanced-rundeck::client') do |chef|
       chef.run_list = [
           "recipe[#{default[:project]}::client]"
       ]
     end
-    builder.vm.network :private_network, ip: "10.2.3.7"
+    client.vm.network :private_network, ip: "10.2.3.7", virtualbox__intnet: true
   end
 
 end

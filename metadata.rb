@@ -6,6 +6,7 @@ description      'Installs/Configures rundeck for Balanced'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.0.1'
 
+depends          'role-base'
 depends          'apt'
 depends          'balanced-citadel'
 depends          'balanced-user'
