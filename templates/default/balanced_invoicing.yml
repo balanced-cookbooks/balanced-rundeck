@@ -1,6 +1,4 @@
-- id: b0a8578c-90b0-4c1b-87c4-840b42735967
-  project: precog
-  schedule:
+- schedule:
     time:
       hour: '20'
       minute: '00'
@@ -14,14 +12,13 @@
     keepgoing: false
     strategy: node-first
     commands:
-    - exec: precog-stats generate
+    - exec: balanced-invoices generate
+    - exec: balanced-invoices settle
   description: ''
-  name: precog-stats
   notification:
     onfailure:
-      recipients: cron+precog-stats@balancedpayments.com
+      recipients: cron+invoices@balancedpayments.com
       urls: https://notify.balancedpayments.com
-  uuid: b0a8578c-90b0-4c1b-87c4-840b42735967
   nodefilters:
     dispatch:
       threadcount: 1
@@ -29,4 +26,4 @@
       excludePrecedence: true
       rankOrder: ascending
     include:
-      tags: pwrk-prod.*
+      tags: bwrk-prod.*

@@ -1,18 +1,14 @@
-- id: b0a8578c-90b0-4c1b-87c4-840b42735967
-  project: balanced
-  loglevel: INFO
+- loglevel: INFO
   sequence:
     keepgoing: false
     strategy: node-first
     commands:
     - exec: hostname
   description: ''
-  name: hostname
   notification:
     onfailure:
       recipients: cron+hostname@balancedpayments.com
       urls: https://notify.balancedpayments.com
-  uuid: b0a8578c-90b0-4c1b-87c4-840b42735967
   nodefilters:
     dispatch:
       threadcount: 1
