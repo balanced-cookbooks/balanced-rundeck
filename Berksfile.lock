@@ -3,12 +3,12 @@ DEPENDENCIES
   balanced-rundeck
     path: .
     metadata: true
-  balanced-user
-    path: ../balanced-user
-  rundeck
-    path: ../rundeck
 
 GRAPH
+  apache2 (1.9.6)
+    iptables (>= 0.0.0)
+    logrotate (>= 0.0.0)
+    pacman (>= 0.0.0)
   apt (2.3.8)
   balanced-citadel (1.0.2)
     citadel (>= 0.0.0)
@@ -16,7 +16,7 @@ GRAPH
     balanced-citadel (>= 0.0.0)
     balanced-user (>= 0.0.0)
     rundeck (>= 0.0.0)
-  balanced-user (1.0.12)
+  balanced-user (1.0.14)
     balanced-citadel (~> 1.0)
     poise (~> 1.0)
     sudo (~> 2.5)
@@ -24,13 +24,17 @@ GRAPH
     user (~> 0.3)
   build-essential (2.0.0)
   citadel (1.0.2)
+  iptables (0.12.0)
   java (1.21.2)
+  logrotate (1.5.0)
+  pacman (1.1.1)
   poise (1.0.10)
-  rundeck (1.0.0)
-    apt (>= 0.0.0)
+  rundeck (2.0.2)
+    apache2 (>= 0.0.0)
     java (>= 0.0.0)
-    poise (>= 0.0.0)
+    rundeck (>= 0.0.0)
     runit (>= 0.0.0)
+    sudo (>= 0.0.0)
   runit (1.5.10)
     build-essential (>= 0.0.0)
     yum (~> 3.0)

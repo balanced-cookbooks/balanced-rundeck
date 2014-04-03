@@ -20,9 +20,6 @@ source 'https://berks.vandelay.io/'
 
 metadata
 
-cookbook 'rundeck', path: '../rundeck'
-cookbook 'balanced-user', path: '../balanced-user'
-
 group(:test) do
   cookbook 'apt'
 end
