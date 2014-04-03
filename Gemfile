@@ -1,7 +1,7 @@
 #
 # Author:: Balanced <dev@balancedpayments.com>
 #
-# Copyright 2013, Balanced, Inc.
+# Copyright 2013-2014, Balanced, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,15 +18,15 @@
 
 source 'https://rubygems.org'
 
-gem 'test-kitchen', github: 'balanced-cookbooks/test-kitchen'
+gem 'test-kitchen'
 gem 'berkshelf', github: 'berkshelf/berkshelf'
-gem 'kitchen-ec2', github: 'test-kitchen/kitchen-ec2'
+gem 'kitchen-ec2'
 gem 'unf'
 gem 'kitchen-vagrant'
 gem 'vagrant-wrapper'
 gem 'foodcritic', '>= 3.0.3'
-gem 's3sync'
+gem 'chef', '~> 11.10'
 
+gem 'vagrant', github: 'mitchellh/vagrant', ref: 'v1.4.3'
 gem 'vagrant-berkshelf', github: 'berkshelf/vagrant-berkshelf'
-gem 'vagrant-omnibus', github: "schisamo/vagrant-omnibus"
-gem 'chef', github: 'opscode/chef'
+gem 'vagrant-omnibus'

@@ -1,7 +1,7 @@
 #
 # Author:: Noah Kantrowitz <noah@coderanger.net>
 #
-# Copyright 2013, Balanced, Inc.
+# Copyright 2013-2014, Balanced, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,10 +18,11 @@
 
 source 'https://berks.vandelay.io/'
 
-group :test do
-  cookbook 'apt'
-end
-
 metadata
 
-cookbook 'rundeck', github: 'priestjim/chef-rundeck'
+cookbook 'rundeck', path: '../rundeck'
+cookbook 'balanced-user', path: '../balanced-user'
+
+group(:test) do
+  cookbook 'apt'
+end
