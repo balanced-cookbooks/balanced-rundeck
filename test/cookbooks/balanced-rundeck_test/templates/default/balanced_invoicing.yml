@@ -12,8 +12,8 @@
     keepgoing: false
     strategy: node-first
     commands:
-    - exec: balanced-invoices generate
-    - exec: balanced-invoices settle
+    - exec: balanced invoices generate
+    - exec: balanced invoices settle
   description: ''
   notification:
     onfailure:

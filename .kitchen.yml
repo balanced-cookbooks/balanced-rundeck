@@ -3,8 +3,8 @@ driver:
   name: vagrant
   customize:
     memory: 1024
-  network:
-  - ["forwarded_port", {guest: 4440, host: 4440}]
+#  network:
+#  - ["forwarded_port", {guest: 4440, host: 4440}]
 
 provisioner:
   name: chef_solo
@@ -19,6 +19,7 @@ suites:
   run_list:
   - recipe[balanced-rundeck]
   - recipe[balanced-rundeck::client]
+  - recipe[balanced-rundeck_test]
   attributes:
     citadel:
       access_key_id: <%= ENV['BALANCED_AWS_ACCESS_KEY_ID'] || ENV['AWS_ACCESS_KEY_ID'] %>
