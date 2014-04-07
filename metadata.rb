@@ -17,7 +17,7 @@
 #
 
 name 'balanced-rundeck'
-version '1.0.2'
+version '1.0.3'
 
 maintainer 'Balanced'
 maintainer_email 'dev@balancedpayments.com'
@@ -28,3 +28,4 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 depends 'balanced-citadel'
 depends 'balanced-user', '~> 1.0.14'
 depends 'rundeck', '~> 1.0'
+depends 'partial_search', '~> 1.0.7'
