@@ -22,4 +22,5 @@ metadata
 
 group(:test) do
   cookbook 'apt'
+  cookbook 'balanced-rundeck_test', path: 'test/cookbooks/balanced-rundeck_test'
 end

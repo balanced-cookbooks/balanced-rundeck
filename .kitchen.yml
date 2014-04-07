@@ -19,6 +19,7 @@ suites:
   run_list:
   - recipe[balanced-rundeck]
   - recipe[balanced-rundeck::client]
+  - recipe[balanced-rundeck_test]
   attributes:
     citadel:
       access_key_id: <%= ENV['BALANCED_AWS_ACCESS_KEY_ID'] || ENV['AWS_ACCESS_KEY_ID'] %>

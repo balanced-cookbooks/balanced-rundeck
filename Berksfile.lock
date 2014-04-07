@@ -3,6 +3,8 @@ DEPENDENCIES
   balanced-rundeck
     path: .
     metadata: true
+  balanced-rundeck_test
+    path: ./test/cookbooks/balanced-rundeck_test
 
 GRAPH
   apt (2.3.8)
@@ -12,6 +14,7 @@ GRAPH
     balanced-citadel (>= 0.0.0)
     balanced-user (~> 1.0.14)
     rundeck (~> 1.0)
+  balanced-rundeck_test (0.0.0)
   balanced-user (1.0.14)
     balanced-citadel (~> 1.0)
     poise (~> 1.0)
@@ -22,7 +25,7 @@ GRAPH
   citadel (1.0.2)
   java (1.21.2)
   poise (1.0.10)
-  rundeck (1.0.0)
+  rundeck (1.0.2)
     apt (>= 0.0.0)
     java (>= 0.0.0)
     poise (>= 0.0.0)
