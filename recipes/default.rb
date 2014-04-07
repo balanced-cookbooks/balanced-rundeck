@@ -22,7 +22,7 @@ include_recipe 'balanced-user'
 rundeck node['rundeck']['node_name'] do
   cli_password citadel['rundeck/cli_password']
   ssh_user 'cmdr'
-  ssh_key citadel['deploy_key/deploy.pem']
+  ssh_key citadel['balanced_cmdr/rundeck.pem']
 end
 
 # Create users (if they have a password in S3)
