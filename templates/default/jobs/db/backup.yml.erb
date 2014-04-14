@@ -12,7 +12,7 @@
     keepgoing: false
     strategy: node-first
     commands:
-    - exec: pg_dump --format=custom --compress=9 --file=/tmp/<%= @db_name %>.sql --user=<%= @user %> --host=<%= @host %> <%= @db_name %>
+    - exec: pg_dump --format=custom --compress=4 --file=/tmp/<%= @db_name %>.sql --user=<%= @user %> --host=<%= @host %> <%= @db_name %>
     - exec: aws s3 cp /tmp/<%= @db_name %>.sql s3://<%= @db_name %>.db/<%= Time.now.strftime("%Y/%m") %>/<%= Time.now.strftime("%Y%m%d_%H%M%S") %>.sql
     - exec: rm /tmp/<%= @db_name %>.sql
   description: ''
