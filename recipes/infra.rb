@@ -4,7 +4,7 @@ rundeck_project 'infra-db' do
     limit 1
   end
 
-  %w(balanced precog).each do |db_name|
+  %w(balanced precog justice).each do |db_name|
     rundeck_job "backup #{db_name}" do
       source 'jobs/db/backup.yml.erb'
       options(
