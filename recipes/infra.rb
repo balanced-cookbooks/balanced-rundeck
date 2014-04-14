@@ -1,6 +1,6 @@
 rundeck_project 'infra-db' do
   rundeck_node_source_file 'infra-db' do
-    query "roles:balanced-db AND chef_environment:#{node.chef_environment}"
+    query "roles:db-secondary AND chef_environment:#{node.chef_environment}"
     limit 1
   end
 
