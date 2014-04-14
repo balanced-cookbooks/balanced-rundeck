@@ -1,1 +1,1 @@
-default['postgres']['master'] = nil
+default['postgres']['archiver'] = nil

@@ -10,7 +10,7 @@ rundeck_project 'infra-db' do
       options(
           :db_name => db_name,
           :user => db_name,
-          :host => node['postgres']['master'],
+          :host => node['postgres']['archiver'],
           :failure_recipient => node['balanced-rundeck']['jobs']['failure_recipient'],
           :failure_notify_url => node['balanced-rundeck']['jobs']['failure_notify_url'],
           :chef_envrionment => node.chef_environment
