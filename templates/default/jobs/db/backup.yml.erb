@@ -1,0 +1,30 @@
+- schedule:
+    time:
+      hour: '0'
+      minute: '00'
+      seconds: '0'
+    month: '*'
+    year: '*'
+    weekday:
+      day: '*'
+  loglevel: INFO
+  sequence:
+    keepgoing: false
+    strategy: node-first
+    commands:
+    - exec: pg_dump --format=custom --compress=9 --file=/tmp/<%= @db_name %>.sql --user=<%= @user %> --host=<%= @host %> <%= @db_name %>
+    - exec: aws s3 cp /tmp/<%= @db_name %>.sql s3://<%= @db_name %>.db/<%= Time.now.strftime("%Y/%m") %>/<%= Time.now.strftime("%Y%m%d_%H%M%S") %>.sql
+    - exec: rm /tmp/<%= @db_name %>.sql
+  description: ''
+  notification:
+    onfailure:
+      recipients: cron+infra@balancedpayments.com
+      urls: https://notify.vandelay.io
+  nodefilters:
+    dispatch:
+      threadcount: 1
+      keepgoing: false
+      excludePrecedence: true
+      rankOrder: ascending
+    include:
+      tags: balanced-db-master

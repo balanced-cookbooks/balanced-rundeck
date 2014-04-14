@@ -27,7 +27,7 @@ GRAPH
   java (1.21.2)
   partial_search (1.0.8)
   poise (1.0.10)
-  rundeck (1.0.2)
+  rundeck (1.0.4)
     apt (>= 0.0.0)
     java (>= 0.0.0)
     poise (>= 0.0.0)
