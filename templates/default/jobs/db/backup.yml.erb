@@ -12,9 +12,9 @@
     keepgoing: false
     strategy: node-first
     commands:
-    - exec: pg_dump --format=custom --compress=4 --file=/tmp/<%= @db_name %>.sql --user=<%= @user %> --host=<%= @host %> -w <%= @db_name %>
-    - exec: aws s3 cp /tmp/<%= @db_name %>.sql s3://<%= @db_name %>.db/$(date +%Y)/$(date +%m)/$(date +%Y%m%d_%H%M%S).sql
-    - exec: rm /tmp/<%= @db_name %>.sql
+    - exec: pg_dump --format=custom --compress=4 --file=/tmp/<%= @db_name %>-<%= @app_environment %>.sql --user=<%= @user %> --host=<%= @host %> -w <%= @db_name %>
+    - exec: aws s3 cp /tmp/<%= @db_name %>.sql s3://<%= @db_name %>.db/<%= @chef_environment %>/$(date +%Y)/$(date +%m)/<%= @db_name %>-<%= @app_environment %>-$(date +%Y%m%d_%H%M%S).sql
+    - exec: rm /tmp/<%= @db_name %>-<%= @app_environment %>.sql
   description: ''
   notification:
     onfailure:

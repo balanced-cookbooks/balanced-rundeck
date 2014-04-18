@@ -13,7 +13,8 @@ rundeck_project 'infra-db' do
           :host => node['postgres']['archiver'],
           :failure_recipient => node['balanced-rundeck']['jobs']['failure_recipient'],
           :failure_notify_url => node['balanced-rundeck']['jobs']['failure_notify_url'],
-          :chef_envrionment => node.chef_environment
+          :chef_environment => node.chef_environment,
+          :app_environment => node['balanced-rundeck']['app_environment']
       )
     end
   end
