@@ -35,3 +35,22 @@ rundeck_project 'infra-db' do
     end
   end
 end
+
+rundeck_project 'infra-db-cluster' do
+
+  rundeck_node_source_file 'infra-db-cluster' do
+    query "roles:db-primary-#{node['balanced-rundeck']['app_environment']} AND chef_environment:#{node.chef_environment} AND tags:primary"
+    limit 1
+  end
+
+  rundeck_job "backup cluster" do
+    source 'jobs/db/backup-cluster.yml.erb'
+    options(
+        :failure_recipient => node['balanced-rundeck']['jobs']['failure_recipient'],
+        :failure_notify_url => node['balanced-rundeck']['jobs']['failure_notify_url'],
+        :chef_environment => node.chef_environment,
+        :app_environment => node['balanced-rundeck']['app_environment'],
+    )
+  end
+
+end
