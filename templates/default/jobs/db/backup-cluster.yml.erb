@@ -1,0 +1,28 @@
+- schedule:
+    time:
+      hour: '8'
+      minute: '00'
+      seconds: '0'
+    month: '*'
+    year: '*'
+    weekday:
+      day: '*'
+  loglevel: INFO
+  sequence:
+    keepgoing: false
+    strategy: node-first
+    commands:
+    - exec: wal-e backup-push $PGDATA
+  description: ''
+  notification:
+    onfailure:
+      recipients: <%= @failure_recipient %>
+      urls: <%= @failure_notify_url %>
+  nodefilters:
+    dispatch:
+      threadcount: 1
+      keepgoing: false
+      excludePrecedence: true
+      rankOrder: ascending
+    include:
+      tags: db-primary-<%= @app_environment %>
