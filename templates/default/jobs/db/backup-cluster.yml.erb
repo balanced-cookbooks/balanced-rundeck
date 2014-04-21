@@ -12,7 +12,7 @@
     keepgoing: false
     strategy: node-first
     commands:
-    - exec: wal-e backup-push $PGDATA
+    - exec: . /var/lib/postgresql/.profile && sudo -E -u postgres wal-e backup-push /mnt/pgdata/9.1/main
   description: ''
   notification:
     onfailure:
