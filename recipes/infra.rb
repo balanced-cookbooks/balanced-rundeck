@@ -53,6 +53,8 @@ rundeck_project 'infra-db-cluster' do
     )
   end
 
+end
+
 rundeck_fabric_project 'infra-fabric' do
   fabric_repository 'git@github.com:balanced/infra.git'
   fabric_revision 'fabric'
