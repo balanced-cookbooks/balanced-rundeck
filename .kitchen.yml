@@ -4,7 +4,7 @@ driver:
   customize:
     memory: 1024
   network:
-  - ["forwarded_port", {guest: 4440, host: 4443}]
+  - ["forwarded_port", {guest: 4440, host: 4440}]
 
 provisioner:
   name: chef_solo
@@ -20,6 +20,7 @@ suites:
   - recipe[balanced-rundeck]
   - recipe[balanced-rundeck::client]
   - recipe[balanced-rundeck::infra]
+  - recipe[balanced-rundeck::ops]
   - recipe[balanced-rundeck_test]
   attributes:
     citadel:
