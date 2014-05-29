@@ -1,7 +1,7 @@
 #
-# Author:: Noah Kantrowitz <noah@coderanger.net>
+# Author:: Matthew Francis-Landau <matthew@balancedpayments.com>
 #
-# Copyright 2013-2014, Balanced, Inc.
+# Copyright 2014, Balanced, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,17 +16,6 @@
 # limitations under the License.
 #
 
-name 'balanced-rundeck'
-version '1.2.2'
-
-maintainer 'Balanced'
-maintainer_email 'dev@balancedpayments.com'
-license 'Apache 2.0'
-description 'Installs/Configures rundeck for Balanced'
-long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-
-depends 'balanced-citadel'
-depends 'balanced-user', '~> 1.0.14'
-depends 'rundeck', '~> 99.1.0'
-depends 'partial_search', '~> 1.0.7'
-depends 'rundeck-fabric', '~> 1.0.0'
+rundeck_fabric_project 'ops' do
+  fabric_repository 'https://github.com/balanced/ops.git'
+end
