@@ -4,4 +4,4 @@ default['balanced-rundeck']['jobs']['db']['archiver_query'] = nil
 default['balanced-rundeck']['jobs']['db']['archiver_environment'] = nil
 
 default['balanced-rundeck']['jobs']['infra-db']['nodes'] = []
-default['balanced-rundeck']['jobs']['infra-db-cluster']['node'] = []
+default['balanced-rundeck']['jobs']['infra-db-cluster']['nodes'] = []
