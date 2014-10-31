@@ -6,9 +6,11 @@ rundeck_project 'infra-db' do
   rundeck_node_source_file 'infra-db' do
     query node_query
     limit 1
+    nodes node['balanced-rundeck']['jobs']['infra-db']['nodes']
   end
 
   if node['balanced-rundeck']['jobs']['db']['specify_host']
+    # this is the ip address of the host param passed to the pg_dump command
     host = node['postgres']['archiver']
   else
     host = nil
@@ -41,6 +43,7 @@ rundeck_project 'infra-db-cluster' do
   rundeck_node_source_file 'infra-db-cluster' do
     query "roles:db-primary-#{node['balanced-rundeck']['app_environment']} AND chef_environment:#{node.chef_environment} AND tags:primary"
     limit 1
+    nodes node['balanced-rundeck']['jobs']['infra-db-cluster']['nodes']
   end
 
   rundeck_job "backup cluster" do
