@@ -21,7 +21,7 @@ include_recipe 'balanced-user'
 # Install Rundeck
 rundeck node['rundeck']['node_name'] do
   cli_password citadel['rundeck/cli_password']
-  ssh_user 'cmdr'
+  ssh_user 'rundeck'
   ssh_key citadel['balanced_cmdr/rundeck.pem']
 end
 
