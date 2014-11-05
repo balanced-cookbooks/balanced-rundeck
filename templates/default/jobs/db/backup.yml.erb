@@ -12,9 +12,9 @@
     keepgoing: false
     strategy: node-first
     commands:
-    - exec: pg_dump --format=custom --compress=4 --file=/tmp/<%= @db_name %>-<%= @app_environment %>.sql --user=<%= @user %> -w <%= @db_name %> <%= "--host=#{@host}" if @host %>
-    - exec: aws s3 cp /tmp/<%= @db_name %>-<%= @app_environment %>.sql s3://<%= @db_name %>.db/<%= @chef_environment %>/<%= @app_environment %>/$(date +%Y)/$(date +%m)/<%= @db_name %>-<%= @app_environment %>-<%= @chef_environment %>-$(date +%Y%m%d_%H%M%S).sql
-    - exec: rm /tmp/<%= @db_name %>-<%= @app_environment %>.sql
+    - exec: pg_dump --format=custom --compress=4 --file=/var/tmp/<%= @db_name %>-<%= @app_environment %>.sql --user=<%= @user %> -w <%= @db_name %> <%= "--host=#{@host}" if @host %>
+    - exec: aws s3 cp /var/tmp/<%= @db_name %>-<%= @app_environment %>.sql s3://<%= @db_name %>.db/<%= @chef_environment %>/<%= @app_environment %>/$(date +%Y)/$(date +%m)/<%= @db_name %>-<%= @app_environment %>-<%= @chef_environment %>-$(date +%Y%m%d_%H%M%S).sql
+    - exec: rm /var/tmp/<%= @db_name %>-<%= @app_environment %>.sql
   description: ''
   notification:
     onfailure:

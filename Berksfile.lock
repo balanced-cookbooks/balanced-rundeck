@@ -1,22 +1,18 @@
 DEPENDENCIES
-  apt
   balanced-rundeck
     path: .
     metadata: true
-  balanced-rundeck_test
-    path: test/cookbooks/balanced-rundeck_test
 
 GRAPH
   apt (2.6.0)
   balanced-citadel (1.0.2)
     citadel (>= 0.0.0)
-  balanced-rundeck (1.2.14)
+  balanced-rundeck (1.2.18)
     balanced-citadel (>= 0.0.0)
     balanced-user (~> 1.0.14)
     partial_search (~> 1.0.7)
     rundeck (~> 99.1.0)
     rundeck-fabric (~> 1.0.0)
-  balanced-rundeck_test (0.0.0)
   balanced-user (1.0.22)
     balanced-citadel (~> 1.0)
     poise (~> 1.0)
