@@ -16,8 +16,9 @@
   description: ''
   notification:
     onfailure:
-      recipients: <%= @failure_recipient %>
-      urls: <%= @failure_notify_url %>
+      email:
+        recipients: <%= @failure_recipient %>
+        attachLog: true
   nodefilters:
     dispatch:
       threadcount: 1

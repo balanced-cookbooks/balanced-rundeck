@@ -18,7 +18,9 @@
   description: ''
   notification:
     onfailure:
-      recipients: cron+infra@balancedpayments.com
+      email:
+        recipients: <%= @failure_recipient %>
+        attachLog: true
   nodefilters:
     dispatch:
       threadcount: 1

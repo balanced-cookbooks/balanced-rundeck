@@ -17,7 +17,7 @@
 #
 
 name 'balanced-rundeck'
-version '1.2.18'
+version '1.2.20'
 
 maintainer 'Balanced'
 maintainer_email 'dev@balancedpayments.com'
