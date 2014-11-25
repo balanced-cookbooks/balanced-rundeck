@@ -17,5 +17,5 @@
 #
 
 rundeck_fabric_project 'ops' do
-  fabric_repository 'https://github.com/balanced/ops.git'
+  fabric_repository 'https://github.com/balanced-ops/ops.git'
 end
