@@ -57,3 +57,23 @@ rundeck_project 'infra-db-cluster' do
   end
 
 end
+
+file '/root/.ssh/deploy' do
+  content citadel['deploy_key/deploy.pem']
+  mode '400'
+end
+template '/root/.ssh/config' do
+  source 'ssh_config.erb'
+  cookbook 'balanced-rundeck'
+  owner 'root'
+  group 'root'
+  mode '400'
+  variables(
+      :ssh_identity_file => '/root/.ssh/deploy'
+  )
+end
+rundeck_fabric_project 'infra-fabric' do
+  fabric_repository 'git@github.com:balanced/infra.git'
+  fabric_revision 'fabric'
+  fabric_version '1.8.3'
+end

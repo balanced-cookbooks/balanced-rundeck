@@ -28,5 +28,6 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 depends 'balanced-citadel'
 depends 'balanced-user', '~> 1.0.14'
 depends 'rundeck', '~> 99.1.0'
+depends 'rundeck-fabric', '~> 1.0'
 depends 'partial_search', '~> 1.0.7'
 depends 'rundeck-fabric', '~> 1.0.0'
